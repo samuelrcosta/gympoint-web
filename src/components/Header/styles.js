@@ -26,6 +26,7 @@ export const Container = styled.nav`
         font-size: 15px;
         color: #999999;
         text-align: left;
+        text-transform: uppercase;
         font-weight: bold;
       }
     }

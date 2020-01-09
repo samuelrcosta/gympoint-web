@@ -24,17 +24,22 @@ export default function Header() {
       <ul>
         <li>
           <NavLink activeStyle={{ color: colors.textDark }} to="/students">
-            ALUNOS
+            Alunos
           </NavLink>
         </li>
         <li>
           <NavLink activeStyle={{ color: colors.textDark }} to="/plans">
-            PLANOS
+            Planos
           </NavLink>
         </li>
         <li>
           <NavLink activeStyle={{ color: colors.textDark }} to="/enrolls">
-            MATRÍCULAS
+            Matrículas
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeStyle={{ color: colors.textDark }} to="/help-orders">
+            Pedidos de Auxílio
           </NavLink>
         </li>
       </ul>

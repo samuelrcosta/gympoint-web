@@ -4,6 +4,7 @@ import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
 import { signInRequest } from '../../store/modules/auth/actions';
+import Button from '../../components/Button';
 
 import logo from '../../assets/logo.png';
 
@@ -33,9 +34,9 @@ export default function SignIn() {
         <label htmlFor="password">Sua senha</label>
         <Input name="password" type="password" placeholder="*********" />
 
-        <button type="submit">
+        <Button type="submit">
           {loading ? 'Carregando...' : 'Entrar no sistema'}
-        </button>
+        </Button>
       </Form>
     </>
   );
