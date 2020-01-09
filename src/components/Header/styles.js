@@ -36,6 +36,8 @@ export const LogoArea = styled.div`
   padding-right: 30px;
   margin-right: 30px;
   border-right: 1px solid ${darken(0.05, colors.secondary)};
+  display: flex;
+  align-items: center;
 `;
 
 export const UserArea = styled.div`
