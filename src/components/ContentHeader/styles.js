@@ -14,12 +14,27 @@ export const Container = styled.div`
     font-weight: bold;
   }
 
+  button {
+    padding: 10px 20px;
+    margin: 0;
+    height: 38px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+
   button,
   a {
     margin-left: auto;
   }
 
-  a + div {
+  a + div,
+  a + button {
     margin-left: 15px;
   }
 `;

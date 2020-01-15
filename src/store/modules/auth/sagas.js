@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import history from '../../../services/history';
 import api from '../../../services/api';
 import { signInSuccess, signFailure } from './actions';
+import jwtValidator from '../../../utils/jwtExpValidate';
 
 export function* signIn({ payload }) {
   try {
@@ -32,7 +33,7 @@ export function setToken({ payload }) {
 
   const { token } = payload.auth;
 
-  if (token) {
+  if (token && jwtValidator(token)) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
   }
 }

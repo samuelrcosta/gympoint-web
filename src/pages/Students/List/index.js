@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { differenceInYears } from 'date-fns';
+import { toast } from 'react-toastify';
 
 import api from '../../../services/api';
 
@@ -13,11 +14,13 @@ import { Table, Th, Td } from '../../../components/Table';
 import SimpleLink from '../../../components/SimpleLink';
 import SimpleButton from '../../../components/SimpleButton';
 import LoadingBlock from '../../../components/LoadingBlock';
+import DeleteModal from '../../../components/DeleteModal';
 
 export default function List() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
+  const [deleting, setDeleting] = useState(null);
 
   async function loadStudents() {
     setLoading(true);
@@ -45,6 +48,25 @@ export default function List() {
     if (event.key === 'Enter') {
       loadStudents();
     }
+  }
+
+  function handleDeleteModal(student) {
+    const message = `Tem certeza que deseja excluir o aluno <strong>${student.name}</strong>?`;
+    setDeleting({ data: student, message });
+  }
+
+  async function handleDelete(student) {
+    setDeleting(null);
+
+    try {
+      await api.delete(`/students/${student.id}`);
+
+      toast.success('O Aluno foi excluído com sucesso!');
+    } catch (err) {
+      toast.error('Ocorreu um erro ao apagar o aluno.');
+    }
+
+    loadStudents();
   }
 
   return (
@@ -94,7 +116,11 @@ export default function List() {
                     </SimpleLink>
                   </Td>
                   <Td align="left">
-                    <SimpleButton type="button" color={colors.textDanger}>
+                    <SimpleButton
+                      type="button"
+                      color={colors.textDanger}
+                      onClick={() => handleDeleteModal(student)}
+                    >
                       apagar
                     </SimpleButton>
                   </Td>
@@ -104,6 +130,14 @@ export default function List() {
           </Table>
         )}
       </WhiteBlock>
+
+      {deleting && (
+        <DeleteModal
+          {...deleting}
+          onConfirm={handleDelete}
+          onCancel={() => setDeleting(null)}
+        />
+      )}
     </>
   );
 }
