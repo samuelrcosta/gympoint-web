@@ -28,6 +28,10 @@ export const Container = styled.div`
     }
   }
 
+  input:read-only {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
   span {
     color: ${colors.primary};
     align-self: flex-start;
