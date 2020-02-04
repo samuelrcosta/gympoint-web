@@ -9,7 +9,6 @@ import api from '../../../services/api';
 import colors from '../../../styles/colors';
 import ContentHeader from '../../../components/ContentHeader';
 import Button from '../../../components/Button';
-import SearchInput from '../../../components/SearchInput';
 import WhiteBlock from '../../../components/WhiteBlock';
 import { Table, Th, Td } from '../../../components/Table';
 import SimpleLink from '../../../components/SimpleLink';

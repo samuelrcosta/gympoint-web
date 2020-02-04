@@ -14,7 +14,8 @@ export const Container = styled.div`
   }
 
   input:not([id^='react-select']),
-  select {
+  select,
+  textarea {
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -28,6 +29,12 @@ export const Container = styled.div`
     &::placeholder {
       color: #999;
     }
+  }
+
+  textarea {
+    height: auto;
+    padding: 15px;
+    font-size: 15px;
   }
 
   input:read-only {

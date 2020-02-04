@@ -41,4 +41,8 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  textarea {
+    resize: none;
+  }
 `;

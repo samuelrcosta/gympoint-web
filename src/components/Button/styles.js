@@ -26,6 +26,13 @@ export const Container = styled.button`
             background: ${darken(0.03, colors.primary)};
           `}
   }
+
+  ${props =>
+    props.full
+      ? css`
+          width: 100%;
+        `
+      : ''};
 `;
 
 export const LinkContainer = styled(Link)`
