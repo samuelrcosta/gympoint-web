@@ -13,7 +13,8 @@ export const Container = styled.div`
     margin: 7px 0;
   }
 
-  input {
+  input:not([id^='react-select']),
+  select {
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -22,6 +23,7 @@ export const Container = styled.div`
     color: #999;
     margin: 0 0 10px;
     font-size: 16px;
+    background: #fff;
 
     &::placeholder {
       color: #999;

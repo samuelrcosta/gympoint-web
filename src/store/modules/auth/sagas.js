@@ -3,7 +3,11 @@ import { toast } from 'react-toastify';
 
 import history from '../../../services/history';
 import api from '../../../services/api';
-import { signInSuccess, signFailure } from './actions';
+import {
+  signInSuccess,
+  signFailure,
+  signOut as signOutAction,
+} from './actions';
 import jwtValidator from '../../../utils/jwtExpValidate';
 
 export function* signIn({ payload }) {
@@ -28,13 +32,17 @@ export function* signIn({ payload }) {
   }
 }
 
-export function setToken({ payload }) {
+export function* setToken({ payload }) {
   if (!payload) return;
 
   const { token } = payload.auth;
 
-  if (token && jwtValidator(token)) {
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+  if (token) {
+    if (jwtValidator(token)) {
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+    } else {
+      yield put(signOutAction());
+    }
   }
 }
 

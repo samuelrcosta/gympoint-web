@@ -8,6 +8,8 @@ import StudentsList from '../pages/Students/List';
 import StudentsForm from '../pages/Students/Form';
 import PlansList from '../pages/Plans/List';
 import PlansForm from '../pages/Plans/Form';
+import EnrollsList from '../pages/Enrolls/List';
+import EnrollsForm from '../pages/Enrolls/Form';
 
 export default function Routes() {
   return (
@@ -21,6 +23,10 @@ export default function Routes() {
       <Route path="/plans" component={PlansList} exact isPrivate />
       <Route path="/plans/new" component={PlansForm} isPrivate />
       <Route path="/plans/:id/edit" component={PlansForm} isPrivate />
+
+      <Route path="/enrolls" component={EnrollsList} exact isPrivate />
+      <Route path="/enrolls/new" component={EnrollsForm} isPrivate />
+      <Route path="/enrolls/:id/edit" component={EnrollsForm} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} isPrivate />
     </Switch>
